@@ -421,7 +421,7 @@
 <script>
    function updateMap() {
     console.log("Updating map with realtime data")
-    fetch("CodesWithNaitik/coronvirus-statud/blob/master/data2.json")
+    fetch("https://codeswithnaitik.github.io/coronvirus-statud/data2.json")
         .then(response => response.json())
         .then(resp => {
             console.log(resp.data)
