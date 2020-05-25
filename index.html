@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+  <style>
+    .site-update{
+      text-align: center;
+      margin:10px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #head {
+      text-align: center;
+    }
+
+    .circle {
+      height: 10px;
+      width: 10px;
+      background-color: rgb(255, 0, 0);
+      border-radius: 50%;
+
+    }
+    .table {
+      margin:10px auto;
+           border:2px solid black;
+           border-radius: 5px;
+           font-size: large;
+    }
+
+    #mai {
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      }
+      #other{
+        text-align:center;
+      }
+      #mata{
+         margin:20px 10px
+      }
+      #foot{
+        text-align: right;
+      }
+      #pad{
+        margin:10px
+      }
+  </style> -->
+  <title>CodeWithNaitik Corona Map</title>
+</head>
+
+<body>
+  <h1 id=head>Corona Map</h1>
+  <div id='map' style='width: 100vw; height: 100vh;'></div>
+  <div id='mai'>
+    <div class=circle></div><span>
+      <h3 id='mata'>Represent cases less than 1000</h3>
+    </span>
+    </div>
+    <div id='other'>
+      <h3>Other color are representing the places wheree cases are more than 1000</h3>
+      <hr id='pad'>
+      <h1>Cases In India</h1>
+      <h2> Total case in India are :- 1,38,845</h1>
+      <h2>Active Case :- 77,103</h2>
+      <h2>recovery :- 57,720</h2>
+      <h2>Deaths :- 4021</h2>
+    </div>
+    <hr>
+    <section id="state-data" class="site-update">
+      <h1> COVID-19 Statewise Status</h1>
+      <div class="data-table table-responsive">		
+      <table border="1" margin=auto cellspacing="1" cellpadding="1" class="table " style="font-weight:bold">
+      <thead>
+        <tr>
+        <th><strong>S. No.</strong></th>
+        <th><strong>Name of State / UT</strong></th>
+        <th><strong>Total Confirmed cases* </strong></th>                              
+        <th><strong>Cured/Discharged/Migrated</strong></th>
+        <th><strong>Deaths**</strong></th>
+        </tr>
+      </thead>	
+      <tbody>
+      <tr>
+        <td>1</td>
+        <td>Andaman and Nicobar Islands</td>
+        <td>33</td>
+        <td>33</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        
+        <td>2</td>
+        <td>Andhra Pradesh</td>
+        <td>2823</td>
+        <td>1856</td>
+        <td>56</td>
+        </tr>
+        
+        
+        <tr>
+        <td>3</td>
+        <td>Arunachal Pradesh</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        </tr>
+        
+        <tr>
+        <td>4</td>
+        <td>Assam</td>
+        <td>378</td>
+        <td>55</td>
+        <td>4</td>
+        </tr>
+        
+        <tr>
+        <td>5</td>
+        <td>Bihar</td>
+        <td>2587</td>
+        <td>702</td>
+        <td>13</td>
+        </tr>
+        
+        <tr>
+        <td>6</td>
+        <td>Chandigarh</td>
+        <td>238</td>
+        <td>186</td>
+        <td>3</td>
+        </tr>
+        
+        <tr>
+        <td>7</td>
+        <td>Chhattisgarh</td>
+        <td>252</td>
+        <td>67</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>8</td>
+        <td>Dadar Nagar Haveli</td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        </tr>
+        
+        <tr>
+        <td>9</td>
+        <td>Delhi</td>
+        <td>13418</td>
+        <td>6540</td>
+        <td>261</td>
+        </tr>
+        
+        <tr>
+        <td>10</td>
+        <td>Goa</td>
+        <td>66</td>
+        <td>19</td>
+        <td>0</td>
+        </tr>
+        
+        <tr>
+        <td>11</td>
+        <td>Gujarat</td>
+        <td>14056</td>
+        <td>6412</td>
+        <td>858</td>
+        </tr>
+        
+        <tr>
+        <td>12</td>
+        <td>Haryana</td>
+        <td>1184</td>
+        <td>765</td>
+        <td>16</td>
+        </tr>
+        
+        <tr>
+        <td>13</td>
+        <td>Himachal Pradesh</td>
+        <td>203</td>
+        <td>63</td>
+        <td>3</td>
+        </tr>
+        
+        <tr>
+        <td>14</td>
+        <td>Jammu and Kashmir</td>
+        <td>1621</td>
+        <td>809</td>
+        <td>21</td>
+        </tr>
+        <tr>
+        <td>15</td>
+        <td>Jharkhand</td>
+        <td>370</td>
+        <td>148</td>
+        <td>4</td>
+        </tr>
+        
+        <tr>
+        <td>16</td>
+        <td>Karnataka</td>
+        <td>2089</td>
+        <td>654</td>
+        <td>42</td>
+        </tr>
+        
+        <tr>
+        <td>17</td>
+        <td>Kerala</td>
+        <td>847</td>
+        <td>521</td>
+        <td>4</td>
+        </tr>
+        
+        <tr>
+        <td>18</td>
+        <td>Ladakh</td>
+        <td>52</td>
+        <td>43</td>
+        <td>0</td>
+        </tr>
+      
+        <tr>
+        <td>19</td>
+        <td>Madhya Pradesh</td>
+        <td>6665</td>
+        <td>3408</td>
+        <td>290</td>
+        </tr>
+        
+        <tr>
+        <td>20</td>
+        <td>Maharashtra</td>
+        <td>50231</td>
+        <td>14600</td>
+        <td>1635</td>
+        </tr>
+        
+        <tr>
+        <td>21</td>
+        <td>Manipur</td>
+        <td>32</td>
+        <td>4</td>
+        <td>0</td>
+        </tr>
+        <tr>
+        <td>22</td>
+        <td>Meghalaya</td>
+        <td>14</td>
+        <td>12</td>
+        <td>1</td>
+        </tr>
+        
+        <tr>
+        <td>23</td>
+        <td>Mizoram</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        </tr>
+        
+      
+        <tr>
+        <td>24</td>
+        <td>Odisha</td>
+        <td>1336</td>
+        <td>550</td>
+        <td>7</td>
+        </tr>
+      
+        <tr>
+        <td>25</td>
+        <td>Puducherry</td>
+        <td>41</td>
+        <td>12</td>
+        <td>0</td>
+        </tr>
+      
+        <tr>
+        <td>26</td>
+        <td>Punjab</td>
+        <td>2060</td>
+        <td>1898</td>
+        <td>40</td>
+        </tr>
+        
+        <tr>
+        <td>27</td>
+        <td>Rajasthan</td>
+        <td>7028</td>
+        <td>3848</td>
+        <td>163</td>
+        </tr>
+        <tr>
+        <td>28</td>
+        <td>Sikkim</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        </tr>
+      
+        <tr>
+        <td>29</td>
+        <td>Tamil Nadu</td>
+        <td>16277</td>
+        <td>8324</td>
+        <td>111</td>
+        </tr>
+        
+        <tr>
+        <td>30</td>
+        <td>Telengana</td>
+        <td>1854</td>
+        <td>1090</td>
+        <td>53</td>
+        </tr>
+        
+        <tr>
+        <td>31</td>
+        <td>Tripura</td>
+        <td>191</td>
+        <td>165</td>
+        <td>0</td>
+        </tr>
+        
+        
+        
+        <tr>
+        <td>32</td>
+        <td>Uttarakhand</td>
+        <td>317</td>
+        <td>58</td>
+        <td>3</td>
+        </tr>
+        
+        <tr>
+        <td>33</td>
+        <td>Uttar Pradesh</td>
+        <td>6268</td>
+        <td>3538</td>
+        <td>161</td>
+        </tr>                    
+        
+        <tr>
+        <td>34</td>
+        <td>West Bengal</td>
+        <td>3667</td>
+        <td>1339</td>
+        <td>272</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>Cases being reassigned to states</td>
+        <td>2642</td>
+        <td></td>
+        <td></td>
+        </tr>
+        
+        <tr>
+        <td></td>
+        <td colspan="1"><strong><span>Total#</span></strong></td>
+        <td align="right" style="text-align:right;"><strong>138845</strong></td>
+        <td>
+        <strong>57721</strong>
+        </td>
+        <td>
+        <strong>4021</strong>
+        </td>
+        </tr>
+        <tr>
+        <td align="center" style="text-align:center;" colspan="5"><strong>*(Including foreign Nationals)
+      </strong>
+        </td>
+        </tr>
+        <tr>
+        <td align="center" style="text-align:center;" colspan="5"><strong>**( more than 70% cases due to comorbidities )</strong>
+        </td>
+        </tr>
+        
+        <tr>
+        <td align="center" style="text-align:center;" colspan="5"><strong>#States wise distribution is subject to further verification and reconciliation</strong>
+        </td>
+        </tr>
+        <tr>
+        <td align="center" style="text-align:center;" colspan="5"><strong>#Our figures are being reconciled with ICMR</strong></td>
+        </tr>
+        
+      </tbody>
+      </table>
+      </div>
+      </section>
+    
+    <div id='foot'>
+      Last updated at 12:00
+    </div>
+    
+
+</body>
+
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoibmFpdGlrMTIxNyIsImEiOiJja2FqamlscDQwYjlzMnFtaWJqaGRscXBoIn0.80CSPZeWBaCeK9XGH3NzQQ';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v10',
+    zoom: 1,
+    center: [0, 20]
+  });
+</script>
+<script src="index.js"></script>
+
+</html>
