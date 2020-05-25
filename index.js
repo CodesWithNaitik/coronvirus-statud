@@ -1,6 +1,6 @@
 function updateMap() {
     console.log("Updating map with realtime data")
-    fetch("/data2.json")
+    fetch("CodesWithNaitik/coronvirus-statud/blob/master/data2.json")
         .then(response => response.json())
         .then(resp => {
             console.log(resp.data)
